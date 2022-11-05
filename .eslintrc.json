@@ -11,7 +11,8 @@
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
     "prettier/airbnb",
-    "prettier/react"
+    "prettier/react",
+    "plugin:react-hooks/recommended"
   ],
   "overrides": [
   ],
@@ -23,11 +24,14 @@
   "plugins": [
     "react",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "react-hooks"
   ],
   "rules": {
     "prettier/prettier": "error",
     "space-before-function-paren": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
