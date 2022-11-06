@@ -35,7 +35,7 @@ const Button: FC<Props> = ({
           {isLoading ? (
             <>
               <Image
-                alt="Next.js logo"
+                alt="Loading Icon"
                 src={loadingIcon}
                 style={{
                   maxWidth: '100%',
