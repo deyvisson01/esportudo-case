@@ -9,32 +9,47 @@ import { useDispatch, useSelector } from 'react-redux'
 import Header from '../../components/Header'
 import GridCards from '../../components/GridCards'
 import Card from '../../components/Card'
+import Modal from '../../components/Modal'
 
 export default function Home() {
   const router = useRouter()
 
+  const [showTeamsModal, setShowTeamsModal] = useState(false)
   const dispatch = useDispatch()
 
   return (
-    <Container>
-      <Head>
-        <title>Home page</title>
-      </Head>
-      <Header />
-
-      <main>
-        <div>
-          Conheça as ligas e times de cada país e de cada temporada!
-          <GridCards>
-            <>
-              <Card title="Buscar times" />
-              <Card title="Top players" />
-              <Card title="Buscar jogadores" />
-              <Card title="Técnicos" />
-            </>
-          </GridCards>
-        </div>
-      </main>
-    </Container>
+    <>
+      <Container>
+        <Head>
+          <title>Home page</title>
+        </Head>
+        <Header />
+        <h2>Conheça as ligas e times de cada país e de cada temporada!</h2>
+        <main>
+          <div>
+            <GridCards>
+              <>
+                <Card
+                  title="Buscar times"
+                  onClick={() => setShowTeamsModal(true)}
+                />
+                <Card title="Top players" />
+                <Card title="Buscar jogadores" />
+                <Card title="Técnicos" />
+              </>
+            </GridCards>
+          </div>
+        </main>
+      </Container>
+      {showTeamsModal && (
+        <Modal
+          maxWidth={'100%'}
+          title="Buscar times"
+          onClose={() => setShowTeamsModal(false)}
+        >
+          {<div>teste</div>}
+        </Modal>
+      )}
+    </>
   )
 }
