@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 // Components
-import { Container } from './Home/container'
+import { Container } from './Home/styles'
 
 import {
   selectAuthState,
@@ -28,7 +28,7 @@ export default function Home() {
   const enterUserName = () => {
     setLoading(true)
     dispatch(setAuthState(userName))
-    setTimeout(() => router.push('/teste'), 3000)
+    setTimeout(() => router.push('/Home'), 3000)
   }
 
   return (
