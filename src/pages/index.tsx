@@ -1,15 +1,20 @@
 import Head from 'next/head'
-//import Image from 'next/image'
 
 // Components
 import { Container } from './Home/container'
 
-import { selectAuthState, setAuthState } from '../store/authSlice'
+import {
+  selectAuthState,
+  selectLeagues,
+  setAuthState,
+  setLeagues
+} from '../store/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../components/Button'
 
 export default function Home() {
   const authState = useSelector(selectAuthState)
+  const leagues = useSelector(selectLeagues)
   const dispatch = useDispatch()
 
   return (
@@ -37,7 +42,7 @@ export default function Home() {
             disabled={false}
             type="primary"
             loading={false}
-            onClick={() => alert('teste')}
+            onClick={() => dispatch(setLeagues())}
           />
         </div>
       </main>
