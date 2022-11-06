@@ -7,6 +7,8 @@ import { Container } from './styles'
 
 import { useDispatch, useSelector } from 'react-redux'
 import Header from '../../components/Header'
+import GridCards from '../../components/GridCards'
+import Card from '../../components/Card'
 
 export default function Home() {
   const router = useRouter()
@@ -18,11 +20,20 @@ export default function Home() {
       <Head>
         <title>Home page</title>
       </Head>
+      <Header />
 
       <main>
-        <Header />
-        <h1>ESPORTUDO</h1>
-        <div></div>
+        <div>
+          Conheça as ligas e times de cada país e de cada temporada!
+          <GridCards>
+            <>
+              <Card title="Buscar times" />
+              <Card title="Top players" />
+              <Card title="Buscar jogadores" />
+              <Card title="Técnicos" />
+            </>
+          </GridCards>
+        </div>
       </main>
     </Container>
   )
