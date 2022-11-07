@@ -28,7 +28,7 @@ export default function Home() {
   const enterUserName = () => {
     setLoading(true)
     dispatch(setAuthState(userName))
-    setTimeout(() => router.push('/Home'), 3000)
+    setTimeout(() => router.push('/Home'), 1000)
   }
 
   return (

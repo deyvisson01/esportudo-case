@@ -16,7 +16,7 @@ export const Get = async (
 ) => {
   try {
     const data = await api.get(url, { params, ...baseHeaders(headers) })
-    return data.data
+    return data.data.response
   } catch (error) {
     throw error
   }

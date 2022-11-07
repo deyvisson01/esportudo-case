@@ -5,8 +5,11 @@ import { AppState } from './store'
 // Type for our state
 export interface AuthState {
   authState: string
+  seasonSelected: number
+  seasons: any
   leagues: {}
   leaguesById: {}
+  leaguesBySeason: any
   leaguesByName: {}
   leaguesByCountry: {}
 
@@ -41,8 +44,11 @@ export interface AuthState {
 // Initial state
 const initialState: AuthState = {
   authState: '',
+  seasonSelected: 2019,
+  seasons: {},
   leagues: {},
   leaguesById: {},
+  leaguesBySeason: [],
   leaguesByName: {},
   leaguesByCountry: {},
 
@@ -83,6 +89,12 @@ export const authSlice = createSlice({
     setAuthState(state, action) {
       state.authState = action.payload
     },
+    setSeasonSelected(state, action) {
+      state.seasonSelected = action.payload
+    },
+    setSeasons(state) {
+      state.seasons = apiDefault.getSeasons()
+    },
     setLeagues(state) {
       state.leagues = apiDefault.getLeagues()
     },
@@ -91,6 +103,9 @@ export const authSlice = createSlice({
     },
     setLeaguesByName(state, action) {
       state.leaguesByName = apiDefault.getLeaguesByName(action.payload)
+    },
+    setLeaguesBySeason(state, action) {
+      state.leaguesBySeason = apiDefault.getLeaguesBySeason(action.payload)
     },
     setLeaguesByCountry(state, action) {
       state.leaguesByCountry = apiDefault.getLeaguesByCountry(action.payload)
@@ -170,13 +185,25 @@ export const authSlice = createSlice({
   }
 })
 
-export const { setAuthState, setLeagues } = authSlice.actions
+export const {
+  setAuthState,
+  setLeagues,
+  setSeasons,
+  setSeasonSelected,
+  setLeaguesBySeason
+} = authSlice.actions
 
 export const selectAuthState = (state: AppState) => state.auth.authState
+export const selectSeasonSelected = (state: AppState) =>
+  state.auth.seasonSelected
+
+export const selectSeasons = (state: AppState) => state.auth.seasons
 
 export const selectLeagues = (state: AppState) => state.auth.leagues
 export const selectLeaguesById = (state: AppState) => state.auth.leaguesById
 export const selectLeaguesByName = (state: AppState) => state.auth.leaguesByName
+export const selectLeaguesBySeason = (state: AppState) =>
+  state.auth.leaguesBySeason
 export const selectLeaguesByCountry = (state: AppState) =>
   state.auth.leaguesByCountry
 

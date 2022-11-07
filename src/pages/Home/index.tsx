@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -10,12 +10,21 @@ import Header from '../../components/Header'
 import GridCards from '../../components/GridCards'
 import Card from '../../components/Card'
 import Modal from '../../components/Modal'
+import GridItems from '../../components/GridItems'
+import Item from '../../components/Item'
+import TeamNavigate from './components/TeamNavigate'
+import SeasonSelect from './components/SeasonSelect'
+import { setSeasons } from '../../store/authSlice'
 
 export default function Home() {
   const router = useRouter()
 
   const [showTeamsModal, setShowTeamsModal] = useState(false)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setSeasons())
+  }, [dispatch])
 
   return (
     <>
@@ -44,10 +53,15 @@ export default function Home() {
       {showTeamsModal && (
         <Modal
           maxWidth={'100%'}
+          width={'70%'}
           title="Buscar times"
           onClose={() => setShowTeamsModal(false)}
         >
-          {<div>teste</div>}
+          <>
+            Selecione a temporada
+            <SeasonSelect season={2019} />
+            <TeamNavigate season={2019} />
+          </>
         </Modal>
       )}
     </>

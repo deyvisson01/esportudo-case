@@ -1,6 +1,10 @@
 import { Get } from './apiBase'
 import { urls } from '../utils/urls.constantes'
 
+const getSeasons = async () => {
+  return Get(`${urls.GET_LEAGUES}/seasons`)
+}
+
 const getLeagues = () => {
   return Get(`${urls.GET_LEAGUES}`)
 }
@@ -9,6 +13,9 @@ const getLeaguesById = (id: number) => {
 }
 const getLeaguesByName = (name: string) => {
   return Get(`${urls.GET_LEAGUES}?search=${name}`)
+}
+const getLeaguesBySeason = (season: number) => {
+  return Get(`${urls.GET_LEAGUES}?season=${season}`)
 }
 const getLeaguesByCountry = (country: string) => {
   return Get(`${urls.GET_LEAGUES}?country=${country}`)
@@ -82,9 +89,11 @@ const getCoachsByName = (name: string) => {
 }
 
 export const apiDefault = {
+  getSeasons,
   getLeagues,
   getLeaguesById,
   getLeaguesByName,
+  getLeaguesBySeason,
   getLeaguesByCountry,
   getTeamsById,
   getTeamsByName,
